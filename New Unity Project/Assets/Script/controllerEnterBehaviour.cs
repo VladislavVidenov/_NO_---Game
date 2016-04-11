@@ -16,7 +16,9 @@ public class controllerEnterBehaviour : MonoBehaviour {
 	public float fadeRate = 10f;
 	public float fadeTo = 2f;
 	private bool lightStart = false;
-
+    [Header("Scene Transition")]
+    public float transitionTime = 0;
+    public int goToLevel = 0;
     void Start()
     {
         doorAnimator = door.GetComponent<Animator>();
@@ -38,6 +40,17 @@ public class controllerEnterBehaviour : MonoBehaviour {
 			particles1.SetActive (false);
 			particles2.SetActive (true);
 			lightStart = true;
+            StartCoroutine("SwitchToLevel", transitionTime);
+
         }
+    }
+
+    IEnumerator SwitchToLevel (float waitTime)
+    {
+        yield return new WaitForSeconds(1);
+        FadeManager.instance.FadeWhiteScreen(true);
+        yield return new WaitForSeconds(waitTime);
+        GameManager.Instance.ResetKeysCollected();
+        GameManager.Instance.sceneManger.SwitchToLevel(goToLevel);
     }
 }

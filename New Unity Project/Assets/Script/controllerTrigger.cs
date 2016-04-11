@@ -5,7 +5,16 @@ public class controllerTrigger : MonoBehaviour {
 
     public GameObject door;
     private Animator doorAnimator;
+
+
+
+    [Header("Level finish requirements")]
+    int RequiredKeysToFind = 0;
+    
+
+
     void Start() {
+        
         doorAnimator = door.GetComponent<Animator>();
     }
     void OnTriggerEnter(Collider other) {

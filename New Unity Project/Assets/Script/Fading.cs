@@ -36,6 +36,6 @@ public class Fading : MonoBehaviour {
 
     void OnLevelWasLoaded()
     {
-        BeginFade(-1);  // call the fade in function
+        //BeginFade(-1);  // call the fade in function
     }
 }

@@ -3,12 +3,18 @@ using System.Collections;
 
 public class KeyPickupScript : MonoBehaviour {
 
-	void OnTriggerEnter(Collider col)
+    private AudioBehaviour audioBehaviour;
+
+    void Start() {
+        audioBehaviour = GetComponentInChildren<AudioBehaviour>();
+    }
+    void OnTriggerEnter(Collider other)
     {
-        if (col.CompareTag("Player"))
+        if (other.tag == "Player")
         {
+            audioBehaviour.audioSource.PlayOneShot(audioBehaviour.FX[0]);
             GameManager.Instance.keysCollected++;
-           // Debug.Log("key destroyed.");
+            Debug.Log("key destroyed.");
             Destroy(gameObject);
         }
     }

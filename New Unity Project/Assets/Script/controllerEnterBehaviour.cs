@@ -3,7 +3,7 @@ using System.Collections;
 
 public class controllerEnterBehaviour : MonoBehaviour {
 
-   // public controllerBehaviour doorAnim;
+    private AudioBehaviour audioBehaviour;
 
 
     [HideInInspector]
@@ -22,6 +22,7 @@ public class controllerEnterBehaviour : MonoBehaviour {
     void Start()
     {
         doorAnimator = door.GetComponent<Animator>();
+        audioBehaviour = GetComponentInChildren<AudioBehaviour>();
     }
 
 	void Update()
@@ -40,6 +41,7 @@ public class controllerEnterBehaviour : MonoBehaviour {
 			particles1.SetActive (false);
 			particles2.SetActive (true);
 			lightStart = true;
+            audioBehaviour.audioSource.PlayOneShot(audioBehaviour.FX[1]);
             StartCoroutine("SwitchToLevel", transitionTime);
 
         }

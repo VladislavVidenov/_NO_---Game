@@ -3,10 +3,10 @@ using System.Collections;
 
 public class KeyPickupScript : MonoBehaviour {
 
-    private AudioBehaviour audioBehaviour;
+    private AudioBehaviourL1 audioBehaviour;
 
     void Start() {
-        audioBehaviour = GetComponentInChildren<AudioBehaviour>();
+        audioBehaviour = GetComponentInChildren<AudioBehaviourL1>();
     }
     void OnTriggerEnter(Collider other)
     {

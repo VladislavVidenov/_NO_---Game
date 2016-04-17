@@ -13,7 +13,7 @@ public class PickupObject : MonoBehaviour {
     private bool holdingObject;
 
     private Rigidbody rb;
-    public AudioBehaviour audioBehaviour;
+    public AudioBehaviourL1 audioBehaviour;
     [HideInInspector]
     public bool fridgeSoundPlayed = false;
     [HideInInspector]
@@ -27,7 +27,7 @@ public class PickupObject : MonoBehaviour {
     {
         player = GetComponent<Transform>();
         if (GameObject.Find("HUD"))uiMessage = GameObject.Find("HUD").GetComponent<UIController>();
-        audioBehaviour = GetComponentInChildren<AudioBehaviour>();
+        audioBehaviour = GetComponentInChildren<AudioBehaviourL1>();
     }
     void Update() {
         if (holdingObject)
@@ -71,26 +71,26 @@ public class PickupObject : MonoBehaviour {
                 {
                     if (objectHit.name == "fridge" && fridgeSoundPlayed == false)
                     {
-                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.level1Sounds[1]);
-                        StartCoroutine("soundPlayed01", audioBehaviour.level1Sounds[1].length);
+                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.levelSounds[1]);
+                        StartCoroutine("soundPlayed01", audioBehaviour.levelSounds[1].length);
                         objectHit.tag = "Untagged";
                     }
                     else if (objectHit.name == "computer" && computerSoundPlayed == false)
                     {
-                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.level1Sounds[2]);
-                        StartCoroutine("soundPlayed02", audioBehaviour.level1Sounds[2].length);
+                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.levelSounds[2]);
+                        StartCoroutine("soundPlayed02", audioBehaviour.levelSounds[2].length);
                         objectHit.tag = "Untagged";
                     }
                     else if (objectHit.name == "pictureFrame" && picturesSoundPlayed == false)
                     {
-                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.level1Sounds[3]);
-                        StartCoroutine("soundPlayed03", audioBehaviour.level1Sounds[3].length);
+                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.levelSounds[3]);
+                        StartCoroutine("soundPlayed03", audioBehaviour.levelSounds[3].length);
                         objectHit.tag = "Untagged";
                     }
                     else if (objectHit.name == "BooksInteractive" && booksSoundPlayed == false)
                     {
-                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.level1Sounds[4]);
-                        StartCoroutine("soundPlayed04", audioBehaviour.level1Sounds[4].length);
+                        audioBehaviour.audioSource.PlayOneShot(audioBehaviour.levelSounds[4]);
+                        StartCoroutine("soundPlayed04", audioBehaviour.levelSounds[4].length);
                         objectHit.tag = "Untagged";
                     }
                     else {

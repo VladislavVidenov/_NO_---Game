@@ -3,7 +3,7 @@ using System.Collections;
 
 public class controllerEnterBehaviour : MonoBehaviour {
 
-    private AudioBehaviour audioBehaviour;
+    private AudioBehaviourL1 audioBehaviour;
 
 
     [HideInInspector]
@@ -22,7 +22,7 @@ public class controllerEnterBehaviour : MonoBehaviour {
     void Start()
     {
         doorAnimator = door.GetComponent<Animator>();
-        audioBehaviour = GetComponentInChildren<AudioBehaviour>();
+        audioBehaviour = GetComponentInChildren<AudioBehaviourL1>();
     }
 
 	void Update()

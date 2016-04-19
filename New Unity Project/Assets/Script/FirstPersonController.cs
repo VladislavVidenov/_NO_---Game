@@ -62,7 +62,7 @@ public class FirstPersonController : MonoBehaviour
     private float m_NextStep;
     private bool m_Jumping;
     private bool isCrouching;
-    private List<Keys> keyList = new List<Keys>();
+    public List<Keys> keyList = new List<Keys>();
     private AudioSource m_AudioSource;
 
     private void Start()
@@ -282,9 +282,21 @@ public class FirstPersonController : MonoBehaviour
             print("Yo speed pad! :D");
             m_WalkSpeed *= other.GetComponent<SpeedPad>().boostStrength;
         }
-        if (other.GetComponent<Door>() && (keyList.Contains(other.GetComponent<Door>().RequiredItem)))
+        if (other.GetComponent<controllerTrigger>())
         {
-            Destroy(other.gameObject);
+            controllerTrigger door = other.GetComponent<controllerTrigger>();
+            print("Key amount: " + door.RequiredItem.Count);
+
+            foreach (Keys key in door.RequiredItem)
+            {
+                print("foreach! :D");
+                if (!keyList.Contains(key))
+                {
+                    return; //This should always be at the end of triggerEnter otherwhise it might skip other if functions
+                }
+            }
+            print("Setting door to true");
+            door.selected = true;
         }
     }
     private void OnTriggerExit(Collider other)
